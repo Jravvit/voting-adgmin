@@ -11,7 +11,7 @@ class Voting extends Component {
 	  	current_page:1,
 	  	election:[{
 	  		title: "100대 회장선거",
-	  		text:"회장선거",
+	  		text:"회장선거회장선거회장선거회장선거회장선거회장선거회장선거회장선거회장선거회장선거회장선거회장선거회장선거회장선거회장선거회장선거회장선거회장선거회장선거회장선거회장선거회장선거",
 	  		start_time:1541989543,
 	  		end_time:1542680743,
 	  		state:2,
