@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom";
 
 class VotingList extends Component {
 
@@ -6,6 +7,11 @@ class VotingList extends Component {
     super(props);
   
     this.state = {};
+  }
+
+  handleHistory = (id) => {
+  	let url = '/voting/'+id
+  	this.props.history.push(url)
   }
 
   renderTableRow = () => {
@@ -23,23 +29,25 @@ class VotingList extends Component {
   			status = "투표중"
   		}
 
-  		return (<tr className={color} key={index}>
-  			<td>
-  				{status}
-  			</td>
-  			<td>
-  				{row.title}
-  			</td>
-  			<td>
-  				{row.text}
-  			</td>
-  			<td>
-  				{row.start_time}
-  			</td>
-  			<td>
-  				{row.end_time}
-  			</td>
-  		</tr>)
+  		return (
+	  			<tr className={color} key={index} onClick={() => this.handleHistory(row.id)}>
+			  			<td>
+			  				{status}
+			  			</td>
+			  			<td>
+			  				{row.title}
+			  			</td>
+			  			<td>
+			  				{row.text}
+			  			</td>
+			  			<td>
+			  				{row.start_time}
+			  			</td>
+			  			<td>
+			  				{row.end_time}
+			  			</td>
+		  		</tr>
+	  		)
   	})
   }
 
@@ -101,4 +109,4 @@ class VotingList extends Component {
   }
 }
 
-export default VotingList;
+export default withRouter(VotingList);

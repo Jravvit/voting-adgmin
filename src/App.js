@@ -11,12 +11,14 @@ import Header from './component/Header.js';
 import Voting from './container/Voting.js';
 import VotingResult from './container/VotingResult.js';
 import Login from "./container/Login.js";
+import VotingContent from './component/votingContent/VotingContent.js';
 
 
 const Main =()=>(
     <Switch>
       <Route exact path="/" component={Voting}></Route>
       <Route exact path="/voting/result" component={VotingResult}></Route>
+      <Route exact path="/voting/:id" component={VotingContent}></Route>
     </Switch>
   )
 
