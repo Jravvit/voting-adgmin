@@ -1,25 +1,34 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import 'semantic-ui-css/semantic.min.css';
+import {
+	Route,
+	Link,
+	Switch
+} from "react-router-dom";
+import Header from './component/Header.js';
+import Voting from './container/Voting.js';
+import VotingResult from './container/VotingResult.js';
+
+
+const Main =()=>(
+    <Switch>
+      <Route exact path="/" component={Voting}></Route>
+      <Route exact path="/voting/result" component={VotingResult}></Route>
+    </Switch>
+  )
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+         <Header />
+         <div className="content">
+         	<Main />
+         </div>
+         
       </div>
     );
   }
