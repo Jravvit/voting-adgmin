@@ -23,7 +23,7 @@ const Main =()=>(
 class App extends Component {
 
   render() {
-  	const is_auth = false;
+  	const is_auth = true;
     return (
       <div className="App">
       {
