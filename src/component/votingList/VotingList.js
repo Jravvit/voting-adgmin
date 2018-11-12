@@ -23,7 +23,7 @@ class VotingList extends Component {
   			status = "투표중"
   		}
 
-  		return (<tr className={color}>
+  		return (<tr className={color} key={index}>
   			<td>
   				{status}
   			</td>
