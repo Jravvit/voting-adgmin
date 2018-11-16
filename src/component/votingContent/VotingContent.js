@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import "./VotingContent.css";
+import CandidateList from "../../container/CandidateList.js"
 
 class VotingContent extends Component {
 	render() {
@@ -8,7 +9,7 @@ class VotingContent extends Component {
 				<div className="title text-left m-b-50 ">
 					선거이름
 				</div>
-				<div className="ui celled internally grid">
+				<div className="ui  internally grid">
 					<div className="row">
 						<div className="four wide column">
 							photo
@@ -28,8 +29,11 @@ class VotingContent extends Component {
 							</div>
 						</div>
 					</div>
-					<div className="row">
-
+					<div className="row m-t-50">
+						<div className="title text-left m-b-50">
+							선거에 등록 된 후보자 목록 <button className="ui primary button"> 후보자 등록</button>
+						</div>
+						<CandidateList />
 					</div>
 				</div>
 			</div>
