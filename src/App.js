@@ -12,6 +12,9 @@ import Voting from './container/Voting.js';
 import VotingResult from './container/VotingResult.js';
 import Login from "./container/Login.js";
 import VotingContent from './component/votingContent/VotingContent.js';
+import CandidateRegistration from "./container/CandidateRegistration.js";
+import CandidateEdit from "./container/CandidateEdit.js";
+import ElectionRegistration from "./container/ElectionRegistration.js";
 
 
 const Main =()=>(
@@ -19,6 +22,12 @@ const Main =()=>(
       <Route exact path="/" component={Voting}></Route>
       <Route exact path="/voting/result" component={VotingResult}></Route>
       <Route exact path="/voting/:id" component={VotingContent}></Route>
+    {/*<Route exact path="/candidate/:id" component={}></Route>*/}
+      <Route exact path="/voting/:id/candidate/regist" component={CandidateRegistration}></Route>
+      <Route exact path="/voting/:id/candidate/:candidate_id/edit" component={CandidateEdit}></Route>
+      <Route exact path="/election/regist" component={ElectionRegistration}></Route>
+    
+
     </Switch>
   )
 

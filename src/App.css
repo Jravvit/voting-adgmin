@@ -48,6 +48,18 @@
   margin-bottom:20px;
 }
 
+.candidate-registration {
+  padding:0px 100px;
+}
+
+.election-registration {
+  padding:0px 100px;
+}
+
+.voting-result {
+  padding: 0px 100px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

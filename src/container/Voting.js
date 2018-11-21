@@ -47,7 +47,7 @@ class Voting extends Component {
 	  		start_time:1541989543,
 	  		end_time:1542680743,
 	  		state:3,
-	  		id:1
+	  		id:5
 
 	  	}]
 	  }

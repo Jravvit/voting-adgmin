@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { withRouter } from "react-router-dom";
+import { withRouter} from "react-router-dom";
+import VotingContent from "../votingContent/VotingContent.js";
 import './VotingList.css'
 
 class VotingList extends Component {
@@ -12,7 +13,10 @@ class VotingList extends Component {
 
   handleHistory = (id) => {
   	let url = '/voting/'+id
-  	this.props.history.push(url)
+  	this.props.history.push({
+  		pathname: url,
+  		state: this.props.list[id-1]
+  	})
   }
 
   convertTimestamp = (timestamp) => {
@@ -56,7 +60,7 @@ class VotingList extends Component {
   		} else {
   			status = "투표중"
   		}
-
+  		console.log(row.id)
   		return (
 	  			<tr className={color} key={index} onClick={() => this.handleHistory(row.id)}>
 			  			<td>
@@ -131,7 +135,7 @@ class VotingList extends Component {
          		</table>
       		</div>
       	</div>
-   
+
       </div>
     );
   }

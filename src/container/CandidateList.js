@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CandidateContent from "../component/candidateContent/CandidateContent.js"
+import { withRouter } from "react-router-dom";
 
 class CandidateList extends Component {
 	constructor(props) {
@@ -27,18 +28,87 @@ class CandidateList extends Component {
 		  	party:"3",
 		  	election_id: 1,
 		  	id: 3
+		},{
+		  	name:"김숙자",
+		  	thumbnail:"",
+		  	resume:"안녕하세요 제 100대 회장선거 후보 김숙자 입니다.",
+		  	party:"3",
+		  	election_id: 1,
+		  	id: 4
+		},{
+		  	name:"김숙자",
+		  	thumbnail:"",
+		  	resume:"안녕하세요 제 100대 회장선거 후보 김숙자 입니다.",
+		  	party:"3",
+		  	election_id: 1,
+		  	id: 5
+		},{
+		  	name:"김숙자",
+		  	thumbnail:"",
+		  	resume:"안녕하세요 제 100대 회장선거 후보 김숙자 입니다.",
+		  	party:"3",
+		  	election_id: 1,
+		  	id: 6
+		},{
+		  	name:"김숙자",
+		  	thumbnail:"",
+		  	resume:"안녕하세요 제 100대 회장선거 후보 김숙자 입니다.",
+		  	party:"3",
+		  	election_id: 1,
+		  	id: 7
+		},{
+		  	name:"김숙자",
+		  	thumbnail:"",
+		  	resume:"안녕하세요 제 100대 회장선거 후보 김숙자 입니다.",
+		  	party:"3",
+		  	election_id: 1,
+		  	id: 8
 		}]
 
 	  this.state = {};
 	}
 
+	handleHistroy = (id,candidate_id) => {
+		let url = "/voting/"+id+"/candidate/"+candidate_id+"/edit"
+		this.props.history.push({
+			pathname:url,
+			state:this.candidateList[candidate_id-1]
+		})
+	}
+
+	renderCandidateListRender = () => {
+		let count = Math.ceil(this.candidateList.length/4)
+		let candidateListComponents = []
+
+		for(let i=0;i<count;i++) {
+			let data = this.candidateList.slice(i*4,i*4+4)
+
+			candidateListComponents.push(
+				<div className="row">
+					{
+						data.map((c, index) => {
+							return (
+								<div className="column" key={index}>
+									<CandidateContent data={c} handleHistory={this.handleHistroy}/>
+								</div>
+							)
+						})
+					}
+				</div>
+			)
+		}
+		return candidateListComponents;
+	}
+
 	render() {
 		return(
-			<div className="CandidateList">
-				<CandidateContent />				
+			<div className="CandidateList row">
+				<div className="ui equal width grid row">
+					{this.renderCandidateListRender()}
+				</div>				
 			</div>
 		)
 	}
 }
 
-export default CandidateList;
+export default withRouter(CandidateList);

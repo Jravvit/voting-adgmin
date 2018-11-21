@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
 import "./VotingContent.css";
 import CandidateList from "../../container/CandidateList.js"
+import { withRouter} from "react-router-dom";
+import {convertTimestamp} from "../../lib/lib.js"
 
 class VotingContent extends Component {
+
+	moveToCandidateRegist = (id) => {
+	  	let url = '/voting/'+id+'/candidate/regist'
+	  	this.props.history.push({
+	  		pathname: url,
+	  		state: this.props.location.state
+	  	})
+	 }
+
 	render() {
 		return(
 			<div className="voting-content">
 				<div className="title text-left m-b-50 ">
-					선거이름
+					{this.props.location.state.title}
 				</div>
 				<div className="ui  internally grid">
 					<div className="row">
@@ -19,21 +30,21 @@ class VotingContent extends Component {
 								선거기간
 							</div>
 							<div className="m-t-20 m-b-20">
-								2018/09/30 ~ 2018/10/07
+								{convertTimestamp(this.props.location.state.start_time)} ~ {convertTimestamp(this.props.location.state.end_time)}
 							</div>
 							<div className="voting-content-title">
 								선거내용
 							</div>
 							<div className="m-t-20 m-b-20">
-								100대 회장선거
+								{this.props.location.state.text}
 							</div>
 						</div>
 					</div>
-					<div className="row m-t-50">
-						<div className="title text-left m-b-50">
-							선거에 등록 된 후보자 목록 <button className="ui primary button"> 후보자 등록</button>
+					<div className="row m-t-50 ui grid">
+						<div className="row title text-left m-b-50">
+							선거에 등록 된 후보자 목록 <button className="ui primary button" onClick={() => this.moveToCandidateRegist(this.props.location.state.id)}> 후보자 등록</button>
 						</div>
-						<CandidateList />
+						<CandidateList election_id={this.props.location.state.id}/>
 					</div>
 				</div>
 			</div>
