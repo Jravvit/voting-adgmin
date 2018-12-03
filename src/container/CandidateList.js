@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import CandidateContent from "../component/candidateContent/CandidateContent.js"
 import { withRouter } from "react-router-dom";
+import axios from 'axios';
+import {server} from "../lib/API.js"
 
 class CandidateList extends Component {
 	constructor(props) {
@@ -65,7 +67,9 @@ class CandidateList extends Component {
 		  	id: 8
 		}]
 
-	  this.state = {};
+	  this.state = {
+	  	candidate_list: []
+	  };
 	}
 
 	handleHistroy = (id,candidate_id) => {
@@ -77,11 +81,11 @@ class CandidateList extends Component {
 	}
 
 	renderCandidateListRender = () => {
-		let count = Math.ceil(this.candidateList.length/4)
+		let count = Math.ceil(this.state.candidate_list.length/4)
 		let candidateListComponents = []
 
 		for(let i=0;i<count;i++) {
-			let data = this.candidateList.slice(i*4,i*4+4)
+			let data = this.state.candidate_list.slice(i*4,i*4+4)
 
 			candidateListComponents.push(
 				<div className="row">
@@ -98,6 +102,25 @@ class CandidateList extends Component {
 			)
 		}
 		return candidateListComponents;
+	}
+
+	fetchCandidate = (election_id) => {
+		axios('http://'+server+':8080/admin/elections/info/'+election_id+'/candidates').
+		then((rs) => {
+			if(rs.data['error']){
+				console.log(rs.data.error)
+			} else {
+				this.setState({
+					candidate_list:rs.data.candidate
+				})
+			}
+			
+		})
+		.catch((rs) => {console.log(rs)})
+	}
+	
+	componentDidMount() {
+		this.fetchCandidate(this.props.location.state.election_id)
 	}
 
 	render() {

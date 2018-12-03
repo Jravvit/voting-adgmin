@@ -11,12 +11,16 @@ class VotingList extends Component {
     this.state = {};
   }
 
-  handleHistory = (id) => {
+  handleHistory = (id,row) => {
   	let url = '/voting/'+id
   	this.props.history.push({
   		pathname: url,
-  		state: this.props.list[id-1]
+  		state: row
   	})
+  }
+
+  moveToEelectionRegist = () => {
+  	this.props.history.push('/election/regist')
   }
 
   convertTimestamp = (timestamp) => {
@@ -60,9 +64,9 @@ class VotingList extends Component {
   		} else {
   			status = "투표중"
   		}
-  		console.log(row.id)
+
   		return (
-	  			<tr className={color} key={index} onClick={() => this.handleHistory(row.id)}>
+	  			<tr className={color} key={index} onClick={() => this.handleHistory(row.election_id,row)}>
 			  			<td>
 			  				{status}
 			  			</td>
@@ -70,13 +74,13 @@ class VotingList extends Component {
 			  				{row.title}
 			  			</td>
 			  			<td className="voting-text">
-			  				{row.text}
+			  				{row.content}
 			  			</td>
 			  			<td>
-			  				{this.convertTimestamp(row.start_time)}
+			  				{row.start_time}
 			  			</td>
 			  			<td>
-			  				{this.convertTimestamp(row.end_time)}
+			  				{row.end_time}
 			  			</td>
 		  		</tr>
 	  		)
@@ -133,7 +137,11 @@ class VotingList extends Component {
 					    </tr>
 				    </tfoot>
          		</table>
+         		<button className='ui button' role='button' onClick={this.moveToEelectionRegist}>
+				    Submit
+				</button>
       		</div>
+
       	</div>
 
       </div>

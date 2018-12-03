@@ -16,7 +16,6 @@ import CandidateRegistration from "./container/CandidateRegistration.js";
 import CandidateEdit from "./container/CandidateEdit.js";
 import ElectionRegistration from "./container/ElectionRegistration.js";
 
-
 const Main =()=>(
     <Switch>
       <Route exact path="/" component={Voting}></Route>

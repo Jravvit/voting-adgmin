@@ -7,6 +7,7 @@ const convertTimestamp = (timestamp) => {
 			h = hh,
 			min = ('0' + d.getMinutes()).slice(-2),		// Add leading 0.
 			ampm = 'AM',
+			ss = ('0'+ d.getSeconds()).slice(-2),
 			time;
 				
 		if (hh > 12) {
@@ -20,7 +21,7 @@ const convertTimestamp = (timestamp) => {
 		}
 		
 		// ie: 2013-02-18, 8:35 AM	
-		time = yyyy + '-' + mm + '-' + dd + ', ' + h + ':' + min + ' ' + ampm;
+		time = yyyy + '-' + mm + '-' + dd + ' ' + hh + ':' + min + ':' + ss;
 			
 		return time;
 	}
