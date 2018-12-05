@@ -36,7 +36,7 @@ class VotingContent extends Component {
 								선거내용
 							</div>
 							<div className="m-t-20 m-b-20">
-								{this.props.location.state.text}
+								{this.props.location.state.content}
 							</div>
 						</div>
 					</div>

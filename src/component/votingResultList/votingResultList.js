@@ -9,14 +9,12 @@ class VotingResultList extends Component {
 	}
 
 	renderCandidateListRender = () => {
-
+		console.log(this.props.data)
 		let count = Math.ceil(this.props.data.length/4)
 		let candidateListComponents = []
 		
 		for(let i=0;i<count;i++) {
 			let data = this.props.data.slice(i*4,i*4+4)
-
-
 			candidateListComponents.push(
 				<div className="row">
 					{

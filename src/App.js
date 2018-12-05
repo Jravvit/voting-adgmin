@@ -10,7 +10,6 @@ import {
 import Header from './component/Header.js';
 import Voting from './container/Voting.js';
 import VotingResult from './container/VotingResult.js';
-import Login from "./container/Login.js";
 import VotingContent from './component/votingContent/VotingContent.js';
 import CandidateRegistration from "./container/CandidateRegistration.js";
 import CandidateEdit from "./container/CandidateEdit.js";
@@ -33,20 +32,15 @@ const Main =()=>(
 class App extends Component {
 
   render() {
-  	const is_auth = true;
     return (
       <div className="App">
-      {
-      	is_auth?(
       		<div> 
       			<Header />
 		         <div className="content">
 		         	<Main />
 		         </div>
         	</div>
-        ):(<Login />)
-      }
-         
+        )   
       </div>
     );
   }

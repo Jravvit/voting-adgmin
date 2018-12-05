@@ -13,8 +13,8 @@ class VotingResultContent extends Component {
 	}
 
 	renderList = () => {
-		let list = []
-
+		let list = [];
+		console.log(this.props.data.candidate)
 		for(let i =0; i<3;i++) {
 			list.push(
 				<div className="ui segment" key={i}>
