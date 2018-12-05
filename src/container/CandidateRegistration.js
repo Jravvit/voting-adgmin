@@ -40,6 +40,7 @@ class CandidateRegistration extends Component {
 	}
 
 	render() {
+		console.log(this.props.state)
 		return(
 			<div className="candidate-registration">
 				<div className="title m-b-50" >

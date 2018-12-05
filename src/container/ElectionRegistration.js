@@ -38,7 +38,7 @@ class ElectionRegistration extends Component {
 		})
 	}
 
-	handleSumit = (e) => {
+	handleSubmit = (e) => {
 		const election = {
 			title: this.state.title,
 			major: this.state.major,
@@ -62,7 +62,7 @@ class ElectionRegistration extends Component {
 				<div className="title m-b-50" >
 				선거 등록
 				</div>
-				<form className="ui form" onSubmit={this.handleSumit}>
+				<form className="ui form" onSubmit={this.handleSubmit}>
 					<div className="ui equal width grid">
 						<div className="row">
 							<div className="column text-left">

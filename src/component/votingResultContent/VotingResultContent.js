@@ -15,7 +15,14 @@ class VotingResultContent extends Component {
 	renderList = () => {
 		let list = [];
 		console.log(this.props.data.candidate)
-		for(let i =0; i<3;i++) {
+		var tempvalue;
+		if(this.props.data.candidate.length > 3){
+			tempvalue = 3;
+		}
+		else{
+			tempvalue = this.props.data.candidate.length
+		}
+		for(let i =0; i<tempvalue;i++) {
 			list.push(
 				<div className="ui segment" key={i}>
 					{this.props.data.candidate[i].poll}표 | {this.props.data.candidate[i].name}
@@ -107,7 +114,7 @@ class VotingResultContent extends Component {
 					<div className='content'>
 				    <div className='header'>{this.props.data.title} 의 결과</div>
 				    <div className='meta'>
-				      <span className='date'>{convertTimestamp(this.props.data.start_time)} - {convertTimestamp(this.props.data.end_time)}</span>
+				      <span className='date'>{(this.props.data.start_time)} - {(this.props.data.end_time)}</span>
 				    </div>
 				    <div className='description'>
 				    	{this.renderChart()}
