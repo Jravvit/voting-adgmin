@@ -44,7 +44,7 @@ class VotingContent extends Component {
 						<div className="row title text-left m-b-50">
 							선거에 등록 된 후보자 목록 <button className="ui primary button" onClick={() => this.moveToCandidateRegist(this.props.location.state.election_id)}> 후보자 등록</button>
 						</div>
-						<CandidateList election_id={this.props.location.state.id}/>
+						<CandidateList election_id={this.props.location.state.election_id} canvoting = {this.props.location.state.state}/>
 					</div>
 				</div>
 			</div>

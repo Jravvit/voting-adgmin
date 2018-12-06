@@ -17,7 +17,8 @@ class VotingList extends Component {
   }
 
   handleHistory = (id,row) => {
-  	let url = '/voting/'+id
+	  let url = '/voting/'+id
+	  console.log(row)
   	this.props.history.push({
   		pathname: url,
   		state: row

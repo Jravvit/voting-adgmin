@@ -54,7 +54,7 @@ class CandidateRegistration extends Component {
 			thumbnail: this.props.location.state.thumbnail
 		}
 		e.preventDefault()
-		axios.post('http://'+server+':8080/admin/candidates/edit/'+this.props.location.state.candidate_id, revise)
+		axios.put('http://'+server+':8080/admin/candidates/edit/'+this.props.location.state.candidate_id, revise)
 		.then(res => {
 			console.log(res)
 			this.props.history.goBack()

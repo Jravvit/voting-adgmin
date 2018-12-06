@@ -15,11 +15,17 @@ class CandidateList extends Component {
 	}
 
 	handleHistroy = (election_id,candidate_id, num) => {
+		if(this.props.canvoting ===1){ // 투표전의 후보자만 수정이 가능하게끔
 		let url = "/voting/"+election_id+"/candidate/"+candidate_id+"/edit"
 		this.props.history.push({
 			pathname:url,
-			state: this.state.candidate_list[num]
+			state: this.state.candidate_list[num],
 		})
+	}
+	else{
+		alert('투표가 이미 시작되었거나 종료되었습니다.')
+		this.props.history.goBack()
+	}
 	}
 
 	renderCandidateListRender = () => {
